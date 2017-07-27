@@ -5,6 +5,7 @@
   service:
     name: postgres_exporter
     state: "{{ (postgres_exporter_service_state != 'stopped') | ternary('restarted', 'stopped') }}"
+    use: "{{ prometheus_exporter_service_mgr }}"
   when: postgres_exporter_service_notify and (
     _postgres_exporter_service_state is not defined or
     not ( _postgres_exporter_service_state | changed ))
