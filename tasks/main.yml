@@ -1,0 +1,97 @@
+---
+- name: group
+  become: true
+  become_user: root
+  group:
+    name: "{{ postgres_exporter_group }}"
+    state: present
+    system: true
+
+- name: user
+  become: true
+  become_user: root
+  user:
+    name: "{{ postgres_exporter_user }}"
+    group: "{{ postgres_exporter_group }}"
+    home: "{{ postgres_exporter_home }}"
+    createhome: false
+    move_home: false
+    comment: postgres_exporter
+    state: present
+    system: true
+
+- name: home
+  become: true
+  become_user: root
+  file:
+    path: "{{ postgres_exporter_home }}"
+    owner: "{{ postgres_exporter_user }}"
+    group: "{{ postgres_exporter_group }}"
+    mode: "u=rwx,g=rx,o="
+    state: directory
+
+- name: download
+  become: true
+  become_user: root
+  get_url:
+    url: "{{ postgres_exporter_url }}"
+    checksum: "{{ postgres_exporter_checksum }}"
+    dest: "{{ prometheus_exporter_dist_dir }}/{{ postgres_exporter_signature }}"
+    owner: root
+    group: root
+    mode: "u=rwx,go=rx"
+
+- name: symlink
+  become: true
+  become_user: root
+  file:
+    src: "{{ postgres_exporter_dist_dir }}/{{ postgres_exporter_signature }}"
+    path: "{{ prometheus_exporter_dir }}/postgres_exporter"
+    owner: root
+    group: root
+    force: true
+    mode: "ugo=rwx"
+    state: link
+  notify: restart postgres_exporter
+
+- name: config
+  become: true
+  become_user: root
+  template:
+    src: "postgres_exporter.default.conf.j2"
+    dest: "/etc/default/postgres_exporter"
+    owner: root
+    group: root
+    mode: "u=rw,go=r"
+  notify: restart postgres_exporter
+
+- name: queries
+  become: true
+  become_user: root
+  copy:
+    src: "{{ postgres_exporter_queries }}"
+    dest: "{{ postgres_exporter_home }}/queries.yml"
+    owner: "{{ postgres_exporter_user }}"
+    group: "{{ postgres_exporter_group }}"
+    mode: "u=r,g=r,o="
+  notify: restart postgres_exporter
+
+- name: install service
+  include: service-{{ prometheus_exporter_service_mgr }}.yml
+
+- name: Service Enabled
+  become: true
+  become_user: root
+  service:
+    name: postgres_exporter
+    enabled: "{{ postgres_exporter_service_enable }}"
+  when: postgres_exporter_service_manage
+
+- name: Service State
+  become: true
+  become_user: root
+  service:
+    name: postgres_exporter
+    state: "{{ postgres_exporter_service_state }}"
+  register: _postgres_exporter_service_state
+  when: postgres_exporter_service_manage

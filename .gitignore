@@ -1,0 +1,32 @@
+# build products...
+*.py[co]
+build
+
+# Backup files...
+*~
+*.bak
+
+# Eclipse/PyDev stuff...
+.checkstyle
+.project
+.pydevproject
+.settings/
+
+# Mac OS X stuff...
+.DS_Store
+
+# Sublime stuff...
+*.sublime-project
+*.sublime-workspace
+
+# Ansible stuff...
+*.retry
+ansible.cfg
+
+# Test kitchen
+.kitchen/
+.kitchen.local.yml
+
+# Ruby
+.bundle/
+vendor/

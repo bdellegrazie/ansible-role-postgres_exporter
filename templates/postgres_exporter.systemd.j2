@@ -1,0 +1,16 @@
+[Unit]
+Description=postgres_exporter - Exporter for machine metrics.
+Documentation=https://github.com/prometheus/postgres_exporter
+After=network.target
+
+[Service]
+User={{ postgres_exporter_user }}
+Group={{ postgres_exporter_group }}
+EnvironmentFile={{ postgres_exporter_config_file }}
+ExecStart={{ postgres_exporter_program }} $FLAGS
+
+SyslogIdentifier=postgres_exporter
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,6 @@
+---
+# From Galaxy
+- src: 'bdellegrazie.ansible-role-serverspec_test_dependencies'
+  version: 'v0.0.5'
+- src: 'bdellegrazie.ansible-role-prometheus_exporter'
+  version: 'v1.0.13'

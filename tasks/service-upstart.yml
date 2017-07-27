@@ -1,0 +1,11 @@
+---
+- name: upstart service
+  become: true
+  template:
+    src: "postgres_exporter.upstart.j2"
+    dest: "/etc/init/postgres_exporter.conf"
+    owner: root
+    group: root
+    mode: "u=rw,go=r"
+  notify:
+    - restart postgres_exporter

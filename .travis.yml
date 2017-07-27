@@ -1,0 +1,38 @@
+---
+dist: trusty
+
+env:
+  matrix:
+    - distro=centos version='6'
+    - distro=centos version='7'
+    - distro=debian version='8'
+    - distro=ubuntu version='1604'
+    - distro=fedora version='25'
+
+language: ruby
+cache:
+  bundler: true
+  directories:
+    - $HOME/.cache/pip
+
+before_cache:
+  - rm -f $HOME/.cache/pip/log/debug.log
+
+services:
+  - docker
+
+before_install:
+  - sudo apt-get update
+  - sudo apt-get -y -o Dpkg::Options::="--force-confnew" install docker-ce
+  - pip install --user pre-commit
+
+install:
+  - pre-commit install
+  - bundle install --without=development --binstubs=vendor/bin --path=vendor/bundle
+
+script:
+  - pre-commit run --all-files
+  - vendor/bin/kitchen test ${distro}-${version}
+
+notifications:
+  webhooks: https://galaxy.anible.com/api/v1/notifications/

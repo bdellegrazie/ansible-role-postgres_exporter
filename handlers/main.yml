@@ -1,0 +1,10 @@
+---
+- name: restart postgres_exporter
+  become: true
+  become_user: root
+  service:
+    name: postgres_exporter
+    state: "{{ (postgres_exporter_service_state != 'stopped') | ternary('restarted', 'stopped') }}"
+  when: postgres_exporter_service_notify and (
+    _postgres_exporter_service_state is not defined or
+    not ( _postgres_exporter_service_state | changed ))

@@ -1,0 +1,25 @@
+---
+postgres_exporter_user:   postgres
+postgres_exporter_group:  postgres
+
+postgres_exporter_version: "0.2.1"
+postgres_exporter_checksum: "sha1:a10245cfe551cd5326b4f619aea460a3b550a36f"
+
+postgres_exporter_signature: "postgres_exporter-{{ postgres_exporter_version }}"
+postgres_exporter_dist_dir: "{{ prometheus_exporter_dist_dir }}"
+postgres_exporter_url: "https://github.com/wrouesnel/postgres_exporter/releases/download/v{{ postgres_exporter_version }}/postgres_exporter"
+postgres_exporter_program: "{{ prometheus_exporter_dir }}/postgres_exporter"
+postgres_exporter_home: "/var/lib/pgsql"
+postgres_exporter_datasource: "user=postgres host=/var/run/postgresql/ sslmode=disable"
+postgres_exporter_queries: "queries.yml"
+postgres_exporter_flags:
+  'extend.query-path': "{{ postgres_exporter_home }}/queries.yml"
+
+postgres_exporter_config_file: /etc/default/postgres_exporter
+postgres_exporter_pid_path: "/var/run"
+postgres_exporter_log_path: "/var/log/postgres_exporter"
+
+postgres_exporter_service_manage: true
+postgres_exporter_service_enable: true
+postgres_exporter_service_state: started
+postgres_exporter_service_notify: true
