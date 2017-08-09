@@ -2,8 +2,8 @@
 postgres_exporter_user:   postgres
 postgres_exporter_group:  postgres
 
-postgres_exporter_version: "0.2.1"
-postgres_exporter_checksum: "sha1:a10245cfe551cd5326b4f619aea460a3b550a36f"
+postgres_exporter_version: "0.2.2"
+postgres_exporter_checksum: "sha1:67818dd72a49589bcef9a5d157d448e2ffa512ed"
 
 postgres_exporter_signature: "postgres_exporter-{{ postgres_exporter_version }}"
 postgres_exporter_dist_dir: "{{ prometheus_exporter_dist_dir }}"

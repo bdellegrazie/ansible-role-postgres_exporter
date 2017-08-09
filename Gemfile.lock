@@ -18,10 +18,10 @@ GEM
       json
     ethon (0.10.1)
       ffi (>= 1.3.0)
-    excon (0.57.1)
+    excon (0.58.0)
     faraday (0.12.2)
       multipart-post (>= 1.2, < 3)
-    faraday_middleware (0.11.0.1)
+    faraday_middleware (0.12.2)
       faraday (>= 0.7.4, < 1.0)
     ffi (1.9.18)
     gh (0.15.1)
@@ -33,7 +33,8 @@ GEM
       net-http-pipeline
     highline (1.7.8)
     json (2.1.0)
-    kitchen-ansible (0.47.2)
+    kitchen-ansible (0.47.3)
+      mixlib-shellout (<= 2.2.7)
       net-ssh (>= 3)
       test-kitchen (~> 1.4)
     kitchen-verifier-serverspec (0.6.8)
@@ -46,8 +47,8 @@ GEM
       mixlib-shellout
       mixlib-versioning
       thor
-    mixlib-shellout (2.3.2)
-    mixlib-versioning (1.1.0)
+    mixlib-shellout (2.2.7)
+    mixlib-versioning (1.2.2)
     multi_json (1.12.1)
     multipart-post (2.0.0)
     net-http-persistent (2.9.4)
@@ -78,13 +79,13 @@ GEM
       rspec-support (~> 3.6.0)
     rspec-support (3.6.0)
     safe_yaml (1.0.4)
-    serverspec (2.39.1)
+    serverspec (2.39.2)
       multi_json
       rspec (~> 3.0)
       rspec-its
       specinfra (~> 2.68)
     sfl (2.3)
-    specinfra (2.69.0)
+    specinfra (2.70.1)
       net-scp
       net-ssh (>= 2.7, < 5.0)
       net-telnet
