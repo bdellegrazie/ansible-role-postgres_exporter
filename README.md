@@ -30,7 +30,7 @@ Other variables are in defaults/main.yml
 
     - hosts: all
       roles:
-        - { role: ansible-role-postgres_exporter }
+        - { role: bdellegrazie.postgres_exporter }
 
 # License
 
