@@ -9,7 +9,7 @@ postgres_exporter_signature: "postgres_exporter-{{ postgres_exporter_version }}"
 postgres_exporter_dist_dir: "{{ prometheus_exporter_dist_dir }}"
 postgres_exporter_url: "https://github.com/wrouesnel/postgres_exporter/releases/download/v{{ postgres_exporter_version }}/postgres_exporter"
 postgres_exporter_program: "{{ prometheus_exporter_dir }}/postgres_exporter"
-postgres_exporter_home: "/var/lib/pgsql"
+postgres_exporter_home: "{{ '/var/lib/pgsql' if ansible_os_family ==  'RedHat' else '/var/lib/postgresql' }}"
 postgres_exporter_datasource: "user=postgres host=/var/run/postgresql/ sslmode=disable"
 postgres_exporter_queries: "queries.yml"
 postgres_exporter_flags:

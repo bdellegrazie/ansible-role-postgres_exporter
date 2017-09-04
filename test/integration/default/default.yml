@@ -2,4 +2,5 @@
 - hosts: all
   roles:
     - bdellegrazie.ansible-role-serverspec_test_dependencies
+    - galaxyproject.postgresql
     - ansible-role-postgres_exporter
