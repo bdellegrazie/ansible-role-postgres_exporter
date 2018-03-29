@@ -13,12 +13,6 @@ env logdir={{ postgres_exporter_log_path }}
 env user={{ postgres_exporter_user }}
 env group={{ postgres_exporter_group }}
 
-pre-start script
-  mkdir -p $logdir || true
-  chmod 0750 $logdir || true
-  chown $user:$group $logdir || true
-end script
-
 script
   if [ -f "{{ postgres_exporter_config_file }}" ] ; then
     . "{{ postgres_exporter_config_file }}"

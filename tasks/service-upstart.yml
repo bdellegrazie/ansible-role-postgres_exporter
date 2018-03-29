@@ -1,4 +1,13 @@
 ---
+- name: create logdir
+  become: true
+  file:
+    path: "{{ postgres_exporter_log_path }}"
+    owner: "{{ postgres_exporter_user }}"
+    group: "{{ postgres_exporter_group }}"
+    state: directory
+    mode: 0750
+
 - name: upstart service
   become: true
   template:
