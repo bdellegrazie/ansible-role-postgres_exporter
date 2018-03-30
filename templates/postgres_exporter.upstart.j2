@@ -16,6 +16,7 @@ env group={{ postgres_exporter_group }}
 script
   if [ -f "{{ postgres_exporter_config_file }}" ] ; then
     . "{{ postgres_exporter_config_file }}"
+    export DATA_SOURCE_NAME
   fi
 
   pidfile={{ postgres_exporter_pid_path }}/$name.pid
