@@ -12,8 +12,8 @@ Requires Ansible role `bdellegrazie.ansible-role-prometheus_exporter`
 
 | Variable | Description | Default |
 |----------|-------------|---------|
-| `postgres_exporter_version`| Version of the exporter to use | `0.2.1` |
-| `postgres_exporter_tarball_checksum` | checksum of the tarball | sha1 checksum of 0.2.1 tarball |
+| `postgres_exporter_version`| Version of the exporter to use | `0.4.6` |
+| `postgres_exporter_checksum` | checksum of the tarball | sha1 checksum of 0.4.6 tarball |
 | `postgres_exporter_datasource` | DATASOURCE definition | `user=postgres host=/var/run/postgresql/ sslmode=disable` |
 
 | `postgres_exporter_flags`| Command line flags | ['extend.query-path': "{{ postgres_exporter_home }}/queries.yml'] |
