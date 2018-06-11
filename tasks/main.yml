@@ -39,8 +39,8 @@
   unarchive:
     src: "{{ postgres_exporter_url }}"
     dest: "{{ postgres_exporter_dist_dir }}"
-    owner: "{{ postgres_exporter_user }}"
-    group: "{{ postgres_exporter_group }}"
+    owner: root
+    group: root
     mode: "u=rwx,g=rx,o=rx"
     remote_src: yes
     creates: "{{ postgres_exporter_dist_dir }}/{{ postgres_exporter_dist }}/postgres_exporter"
@@ -51,10 +51,10 @@
   file:
     src: "{{ postgres_exporter_dist_dir }}/{{ postgres_exporter_dist }}/postgres_exporter"
     path: "{{ prometheus_exporter_dir }}/postgres_exporter"
-    owner: "{{ postgres_exporter_user }}"
-    group: "{{ postgres_exporter_group }}"
+    owner: root
+    group: root
     force: true
-    mode: "u=rwx,g=rx,o="
+    mode: "ugo=rwx"
     state: link
   notify: restart postgres_exporter
 
