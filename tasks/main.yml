@@ -65,8 +65,8 @@
     src: "postgres_exporter.default.conf.j2"
     dest: "/etc/default/postgres_exporter"
     owner: root
-    group: root
-    mode: "u=rw,go="
+    group: "{{ postgres_exporter_group }}"
+    mode: "u=rw,g=r,o="
   notify: restart postgres_exporter
 
 - name: queries
