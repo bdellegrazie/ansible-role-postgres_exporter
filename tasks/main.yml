@@ -33,22 +33,23 @@
     state: directory
   when: postgres_exporter_user != 'postgres'
 
-- name: download
+- name: download & extract
   become: true
   become_user: root
-  get_url:
-    url: "{{ postgres_exporter_url }}"
-    checksum: "{{ postgres_exporter_checksum }}"
-    dest: "{{ prometheus_exporter_dist_dir }}/{{ postgres_exporter_signature }}"
+  unarchive:
+    src: "{{ postgres_exporter_url }}"
+    dest: "{{ postgres_exporter_dist_dir }}"
     owner: root
     group: root
-    mode: "u=rwx,go=rx"
+    mode: "u=rwx,g=rx,o=rx"
+    remote_src: yes
+    creates: "{{ postgres_exporter_dist_dir }}/{{ postgres_exporter_dist }}/postgres_exporter"
 
 - name: symlink
   become: true
   become_user: root
   file:
-    src: "{{ postgres_exporter_dist_dir }}/{{ postgres_exporter_signature }}"
+    src: "{{ postgres_exporter_dist_dir }}/{{ postgres_exporter_dist }}/postgres_exporter"
     path: "{{ prometheus_exporter_dir }}/postgres_exporter"
     owner: root
     group: root
@@ -65,7 +66,7 @@
     dest: "/etc/default/postgres_exporter"
     owner: root
     group: root
-    mode: "u=rw,go=r"
+    mode: "u=rw,go="
   notify: restart postgres_exporter
 
 - name: queries

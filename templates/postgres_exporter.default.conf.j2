@@ -1,2 +1,2 @@
 DATA_SOURCE_NAME="{{ postgres_exporter_datasource }}"
-FLAGS="{% for KEY,VALUE in postgres_exporter_flags | dictsort %} -{{ KEY ~ '=' ~ VALUE }}{% endfor %}"
+FLAGS="{% for KEY,VALUE in postgres_exporter_flags | dictsort %} --{{ KEY ~ '=' ~ VALUE }}{% endfor %}"
