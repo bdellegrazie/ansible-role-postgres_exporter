@@ -1,6 +1,8 @@
 ---
 postgres_exporter_user:   postgres
+postgres_exporter_user_manage: false
 postgres_exporter_group:  "{{ postgres_exporter_user }}"
+postgres_exporter_group_manage: false
 
 postgres_exporter_version: "0.4.6"
 postgres_exporter_checksum: "sha1:e8467169b994a8cd345b4276fb5694e5c2b6839f"
@@ -10,6 +12,7 @@ postgres_exporter_dist: postgres_exporter_v{{ postgres_exporter_version }}_linux
 postgres_exporter_url: "https://github.com/wrouesnel/postgres_exporter/releases/download/v{{ postgres_exporter_version }}/{{ postgres_exporter_dist }}.tar.gz"
 postgres_exporter_program: "{{ prometheus_exporter_dir }}/postgres_exporter"
 postgres_exporter_home: "{{ '/var/lib/pgsql' if ansible_os_family ==  'RedHat' else '/var/lib/postgresql' }}"
+postgres_exporter_home_manage: false
 postgres_exporter_datasource: "user=postgres host=/var/run/postgresql/ sslmode=disable"
 postgres_exporter_queries: "queries.yml"
 postgres_exporter_flags:

@@ -6,7 +6,7 @@
     name: "{{ postgres_exporter_group }}"
     state: present
     system: true
-  when: postgres_exporter_group != 'postgres'
+  when: postgres_exporter_group_manage | bool
 
 - name: user
   become: true
@@ -20,7 +20,7 @@
     comment: postgres_exporter
     state: present
     system: true
-  when: postgres_exporter_user != 'postgres'
+  when: postgres_exporter_user_manage | bool
 
 - name: home
   become: true
@@ -31,7 +31,17 @@
     group: "{{ postgres_exporter_group }}"
     mode: "u=rwx,g=rx,o="
     state: directory
-  when: postgres_exporter_user != 'postgres'
+  when: postgres_exporter_home_manage | bool
+
+- name: logs
+  become: true
+  become_user: root
+  file:
+    path: "{{ postgres_exporter_log_path }}"
+    owner: "{{ postgres_exporter_user }}"
+    group: "{{ postgres_exporter_group }}"
+    mode: "u=rwx,g=rx,o="
+    state: directory
 
 - name: download & extract
   become: true

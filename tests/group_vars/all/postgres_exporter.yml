@@ -1,6 +1,9 @@
 ---
 
 postgres_exporter_user: postgres_exporter
+postgres_exporter_user_manage: true
 postgres_exporter_group: "{{ postgres_exporter_user }}"
+postgres_exporter_group_manage: true
 postgres_exporter_home: "/var/lib/postgres_exporter"
+postgres_exporter_home_manage: true
 postgres_exporter_datasource: "postgresql://postgres_exporter:@127.0.0.1:5432/postgres?sslmode=disable"

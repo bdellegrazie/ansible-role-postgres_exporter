@@ -12,6 +12,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Fixed
 ### Security
 
+## [3.0.0]
+### Changed
+- User, Group and Home are explicitly managed (switched off by default)
+- Log dir is created in Ansible
+
 ## [2.0.0]
 ### Changed
 - Modified to use [Jeff Geerling's](https://github.com/geerlingguy/) docker based testing technique
