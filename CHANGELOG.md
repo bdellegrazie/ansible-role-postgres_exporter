@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Added
 ### Changed
 - Switch to Molecule for tests
+- Upgrade to postgres\_exporter 0.4.7
 ### Deprecated
 ### Removed
 ### Fixed
