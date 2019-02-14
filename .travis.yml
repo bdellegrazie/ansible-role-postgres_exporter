@@ -1,66 +1,34 @@
 ---
-dist: trusty
+dist: xenial
 sudo: required
-env:
-  matrix:
-    - distro: centos7
-    #- distro: centos6 Disabled until upstream Dockerfile change to support SNI merged
-    - distro: fedora27
-    - distro: ubuntu1804
-    - distro: ubuntu1604
-    - distro: ubuntu1404
-    #- distro: ubuntu1204
-    - distro: debian9
-    - distro: debian8
 
-language: ruby
-bundler_args: --without=development --binstubs=vendor/bin
+language: python
+python:
+  - "3.6"
+
+services:
+  - docker
+
 cache:
   bundler: true
   directories:
     - $HOME/.cache/pip
-    - $HOME/.inspec/cache
+    - $HOME/.gilt/clone
 
 before_cache:
   - rm -f $HOME/.cache/pip/log/debug.log
 
-services:
-  - docker
-  - postgresql
-
-addons:
-  postgresql: "9.6"
-
 before_install:
   - sudo apt-get update
   - sudo apt-get -y -o Dpkg::Options::="--force-confnew" install docker-ce
+  - pip install pipenv
+
+install:
+  - pipenv install --dev
 
 script:
-  # Configure test script so we can run extra tests after playbook is run.
-  - export container_id=$(date +%s)
-  - export cleanup=false
-
-  # Download test shim.
-  - wget -O ${PWD}/tests/test.sh https://gist.githubusercontent.com/geerlingguy/73ef1e5ee45d8694570f334be385e181/raw/
-  - chmod +x ${PWD}/tests/test.sh
-
-  # Run tests.
-  - ${PWD}/tests/test.sh
-  - vendor/bin/inspec exec tests/profile -t docker://${container_id} --color --reporter=cli
-
-  # Clean up
-  - docker rm -f ${container_id}
-
-stages:
-  - lint
-  - test
-
-jobs:
-  include:
-    - stage: lint
-      before_install: pip install --user pre-commit
-      install: pre-commit install
-      script: pre-commit run --all-files
+  # Run tests
+  - pipenv run molecule test
 
 notifications:
   webhooks: https://galaxy.ansible.com/api/v1/notifications/

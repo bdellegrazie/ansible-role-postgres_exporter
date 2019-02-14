@@ -8,24 +8,24 @@ galaxy_info:
   min_ansible_version: 2.0
 
   platforms:
-  - name: EL
-    versions:
-    - 6
-    - 7
-  - name: Fedora
-    versions:
-    - all
-  - name: Ubuntu
-    versions:
-    - all
-  - name: Debian
-    versions:
-    - all
+    - name: EL
+      versions:
+        - 6
+        - 7
+    - name: Fedora
+      versions:
+        - all
+    - name: Ubuntu
+      versions:
+        - all
+    - name: Debian
+      versions:
+        - all
 
   galaxy_tags:
-  - prometheus
-  - exporter
-  - postgresql
+    - prometheus
+    - exporter
+    - postgresql
 
 dependencies:
-  - { role: 'bdellegrazie.ansible-role-prometheus_exporter', version: 'v1.0.14' }
+  - { role: 'bdellegrazie.ansible-role-prometheus_exporter', version: 'v1.0.16' }

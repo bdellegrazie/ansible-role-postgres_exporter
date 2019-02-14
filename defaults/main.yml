@@ -1,7 +1,7 @@
 ---
-postgres_exporter_user:   postgres
+postgres_exporter_user: postgres
 postgres_exporter_user_manage: false
-postgres_exporter_group:  "{{ postgres_exporter_user }}"
+postgres_exporter_group: "{{ postgres_exporter_user }}"
 postgres_exporter_group_manage: false
 
 postgres_exporter_version: "0.4.6"

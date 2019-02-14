@@ -1,0 +1,14 @@
+---
+port:
+  tcp6:9187:
+    listening: true
+
+# 15 character limit on process names
+process:
+  postgres_export:
+    running: true
+
+service:
+  postgres_exporter:
+    enabled: true
+    running: true

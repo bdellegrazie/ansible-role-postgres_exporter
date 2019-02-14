@@ -52,7 +52,7 @@
     owner: root
     group: root
     mode: "u=rwx,g=rx,o=rx"
-    remote_src: yes
+    remote_src: true
     creates: "{{ postgres_exporter_dist_dir }}/{{ postgres_exporter_dist }}/postgres_exporter"
 
 - name: symlink

@@ -1,6 +1,5 @@
 ---
-
-postgres_exporter_user: postgres_exporter
+postgres_exporter_user: postgres
 postgres_exporter_user_manage: true
 postgres_exporter_group: "{{ postgres_exporter_user }}"
 postgres_exporter_group_manage: true

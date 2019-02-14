@@ -53,7 +53,7 @@ start() {
 	export DATA_SOURCE_NAME
 	daemonize -a -c '/' -e ${logdir}/${name}.err.log -o ${logdir}/${name}.out.log \
 		-p $pidfile -l $lockfile -u $user \
-		$binary $FLAGS
+		$prog $FLAGS
 	RETVAL=$?
 	echo
 	[ $RETVAL -eq 0 ] && touch $lockfile
