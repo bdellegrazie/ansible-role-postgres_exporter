@@ -7,12 +7,18 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## [Unreleased]
 ### Added
 ### Changed
-- Switch to Molecule for tests
-- Upgrade to postgres\_exporter 0.4.7
+- Ansible 2.7.9 for tests
+- Molecule update (minor)
+- Pre-commit update (minor)
 ### Deprecated
 ### Removed
 ### Fixed
 ### Security
+
+## [3.1.0]
+### Changed
+- Switch to Molecule for tests
+- Upgrade to postgres\_exporter 0.4.7
 
 ## [3.0.0]
 ### Changed
