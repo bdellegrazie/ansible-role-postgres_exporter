@@ -7,13 +7,19 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## [Unreleased]
 ### Added
 ### Changed
-- Ansible 2.7.9 for tests
-- Molecule update (minor)
-- Pre-commit update (minor)
 ### Deprecated
 ### Removed
 ### Fixed
 ### Security
+
+## [4.0.0] 2019-08-13
+### Added
+### Changed
+- Ansible 2.8.3 for tests
+- Molecule update (minor)
+- Pre-commit update (minor)
+- prometheus\_exporter dependency updated to 1.1.1
+- postgres\_exporter updated to 0.5.1
 
 ## [3.1.0]
 ### Changed
@@ -33,6 +39,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Fixed
 - Missing export of DATA\_SOURCE\_NAME in upstart init, part of #3 by mbee (above)
 
+[Unrleased]: https://github.com/bdellegrazie/ansible-role-postgresql_exporter/compare/v3.1.0...HEAD
+[4.0.0]: https://github.com/bdellegrazie/ansible-role-postgresql_exporter/compare/v3.1.0...v4.0.0
+[3.1.0]: https://github.com/bdellegrazie/ansible-role-postgresql_exporter/compare/v3.0.0...v3.1.0
+[3.0.0]: https://github.com/bdellegrazie/ansible-role-postgresql_exporter/compare/v2.0.0...v3.0.0
+[2.0.0]: https://github.com/bdellegrazie/ansible-role-postgresql_exporter/compare/v1.0.3...v2.0.0
 [1.0.3]: https://github.com/bdellegrazie/ansible-role-postgresql_exporter/compare/v1.0.2...v1.0.2
 [1.0.2]: https://github.com/bdellegrazie/ansible-role-postgresql_exporter/compare/v1.0.1...v1.0.2
 [1.0.1]: https://github.com/bdellegrazie/ansible-role-postgresql_exporter/compare/v1.0.0...v1.0.1

@@ -12,3 +12,9 @@ service:
   postgres_exporter:
     enabled: true
     running: true
+
+http:
+  http://localhost:9187/metrics:
+    status: 200
+    body:
+      - 'pg_up 1'
