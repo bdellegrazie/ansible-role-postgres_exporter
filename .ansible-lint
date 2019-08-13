@@ -1,6 +1,5 @@
 ---
 exclude_paths:
   - .travis.yml
-  - molecule/default/tests/test_ca_certificates.yml
 skip_list:
   - '204'
