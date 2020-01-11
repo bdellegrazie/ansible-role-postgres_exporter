@@ -4,8 +4,8 @@ postgres_exporter_user_manage: false
 postgres_exporter_group: "{{ postgres_exporter_user }}"
 postgres_exporter_group_manage: false
 
-postgres_exporter_version: "0.5.1"
-postgres_exporter_checksum: "sha256:7b00cc56d83e3a8f5a58d2b0f17f12b1b3b1b1ecccffffc3e8446ff187058c0e"
+postgres_exporter_version: "0.8.0"
+postgres_exporter_checksum: "sha256:272ed14d3c360579d6e231db34a568ec08f61d2e163cf111e713929ffb6db3f5"
 
 postgres_exporter_dist_dir: "{{ prometheus_exporter_dist_dir }}"
 postgres_exporter_dist: postgres_exporter_v{{ postgres_exporter_version }}_linux-amd64
