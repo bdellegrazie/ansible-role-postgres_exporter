@@ -1,5 +1,6 @@
 ---
 galaxy_info:
+  role_name: postgres_exporter
   author: Brett Delle Grazie
   description: Role to install Prometheus PostgreSQL Exporter
 
@@ -12,6 +13,7 @@ galaxy_info:
       versions:
         - 6
         - 7
+        - 8
     - name: Fedora
       versions:
         - all
@@ -28,4 +30,4 @@ galaxy_info:
     - postgresql
 
 dependencies:
-  - { role: 'bdellegrazie.ansible-role-prometheus_exporter', version: 'v1.1.3' }
+  - { role: 'bdellegrazie.ansible-role-prometheus_exporter', version: 'v2.0.2' }

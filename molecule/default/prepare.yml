@@ -1,4 +1,21 @@
 ---
 - hosts: all
+  tasks:
+    - name: Update package cache (Debian, Ubuntu)
+      become: true
+      apt:
+        update_cache: true
+      when: (ansible_os_family | lower) == 'debian'
+      ignore_errors: true  # Necessary as snapshot repos expire
+
+    - name: Update package cache (Redhat)
+      become: true
+      yum:
+        update_cache: true
+      when:
+        - (ansible_os_family | lower) == 'redhat'
+      ignore_errors: true  # Necessary as snapshot repos expire
+
+- hosts: all
   roles:
     - geerlingguy.postgresql

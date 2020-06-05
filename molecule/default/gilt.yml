@@ -1,7 +1,7 @@
 ---
 - git: 'https://github.com/bdellegrazie/ansible-role-prometheus_exporter.git'
-  version: 'v1.1.3'
+  version: 'v2.0.2'
   dst: $MOLECULE_EPHEMERAL_DIRECTORY/roles/bdellegrazie.ansible-role-prometheus_exporter/
 - git: 'https://github.com/geerlingguy/ansible-role-postgresql.git'
-  version: '2.0.1'
+  version: '2.2.1'
   dst: $MOLECULE_EPHEMERAL_DIRECTORY/roles/geerlingguy.postgresql/
