@@ -16,6 +16,19 @@
         - (ansible_os_family | lower) == 'redhat'
       ignore_errors: true  # Necessary as snapshot repos expire
 
+    - name: Create man directories
+      become: true
+      file:
+        path: "{{ item }}"
+        owner: root
+        group: root
+        mode: "u=rwx,go=rx"
+        state: directory
+      loop:
+        - /usr/share/man/man1
+        - /usr/share/man/man7
+      when: (ansible_distribution | lower) == 'debian'
+
 - hosts: all
   roles:
     - geerlingguy.postgresql
