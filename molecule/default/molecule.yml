@@ -1,17 +1,14 @@
 ---
 dependency:
-  name: gilt
+  name: shell
+  command: gilt --config ${MOLECULE_SCENARIO_DIRECTORY}/gilt.yml overlay
 driver:
   name: docker
 lint: |
   set -e
   yamllint .
+  ansible-lint
 platforms:
-  #- name: centos6  # PostgreSQL fails to start
-  #  image: "geerlingguy/docker-centos6-ansible"
-  #  pull: true
-  #  pre_build_image: true
-  #  command: "/sbin/init"
   - name: centos7
     image: docker.io/bdellegrazie/centos-systemd:7
     pull: true
@@ -34,17 +31,17 @@ platforms:
       - /tmp
     volumes:
       - /sys/fs/cgroup:/sys/fs/cgroup:ro
-  #- name: debian9  # PostgreSQL fails to start due to /etc/alternatives link on slim image for documentation
-  #  image: docker.io/bdellegrazie/debian-systemd:9
-  #  pull: true
-  #  pre_build_image: true
-  #  override_command: false
-  #  tmpfs:
-  #    - /run
-  #    - /run/lock
-  #    - /tmp
-  #  volumes:
-  #    - /sys/fs/cgroup:/sys/fs/cgroup:ro
+  - name: debian9
+    image: docker.io/bdellegrazie/debian-systemd:9
+    pull: true
+    pre_build_image: true
+    override_command: false
+    tmpfs:
+      - /run
+      - /run/lock
+      - /tmp
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro
   - name: debian10
     image: docker.io/bdellegrazie/debian-systemd:10
     pull: true
