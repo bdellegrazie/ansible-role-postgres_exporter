@@ -4,12 +4,12 @@ postgres_exporter_user_manage: false
 postgres_exporter_group: "{{ postgres_exporter_user }}"
 postgres_exporter_group_manage: false
 
-postgres_exporter_version: "0.8.0"
-postgres_exporter_checksum: "sha256:272ed14d3c360579d6e231db34a568ec08f61d2e163cf111e713929ffb6db3f5"
+postgres_exporter_version: "0.9.0"
+postgres_exporter_checksum: "sha256:ff541bd3ee19c0ae003d71424a75edfcc8695e828dd20d5b4555ce433c89d60b"
 
 postgres_exporter_dist_dir: "{{ prometheus_exporter_dist_dir }}"
-postgres_exporter_dist: postgres_exporter_v{{ postgres_exporter_version }}_linux-amd64
-postgres_exporter_url: "https://github.com/wrouesnel/postgres_exporter/releases/download/v{{ postgres_exporter_version }}/{{ postgres_exporter_dist }}.tar.gz"
+postgres_exporter_dist: postgres_exporter-{{ postgres_exporter_version }}.linux-amd64
+postgres_exporter_url: "https://github.com/prometheus-community/postgres_exporter/releases/download/v{{ postgres_exporter_version }}/{{ postgres_exporter_dist }}.tar.gz"
 postgres_exporter_program: "{{ prometheus_exporter_dir }}/postgres_exporter"
 postgres_exporter_home: "{{ '/var/lib/pgsql' if ansible_os_family ==  'RedHat' else '/var/lib/postgresql' }}"
 postgres_exporter_home_manage: false
